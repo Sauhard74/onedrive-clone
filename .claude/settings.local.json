@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -k http://localhost:8081/a/frontend/bootconf)",
+      "Bash(curl -k https://localhost:8081/a/frontend/bootconf)",
+      "Bash(python3 -m json.tool)",
+      "Bash(curl -k -X POST https://localhost:8081/auth/login -H \"Content-Type: application/json\" -d '{\"\"login\"\":\"\"admin\"\",\"\"password\"\":\"\"admin123\"\"}')",
+      "Bash(chmod +x /Users/sauhardgupta/onedrive-clone/rebrand-and-deploy.sh)",
+      "Bash(./rebrand-and-deploy.sh)",
+      "Bash(curl -k https://localhost:8081/onedrive-theme.css)",
+      "Bash(pkill -f \"cells start\")",
+      "Bash(make dev)",
+      "Bash(curl -k https://localhost:8081/plug/gui.ajax/res/dist/onedrive-theme.css)",
+      "Bash(curl -k https://localhost:8081)",
+      "Bash(node --version)",
+      "Bash(npm --version)",
+      "Bash(npm install)",
+      "Bash(npm install --legacy-peer-deps)",
+      "Bash(npm run)",
+      "Bash(npm run build-core)",
+      "Bash(awk '{print \"\"\"\"PID:\"\"\"\", $2, \"\"\"\"CPU:\"\"\"\", $3\"\"\"\"%\"\"\"\", \"\"\"\"MEM:\"\"\"\", $4\"\"\"\"%\"\"\"\", \"\"\"\"TIME:\"\"\"\", $10}')",
+      "Bash(npx webpack --config webpack.core.js)",
+      "Bash(npx webpack --config webpack.libs.js)",
+      "Bash(npm run build-libs)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
