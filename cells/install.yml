@@ -1,0 +1,32 @@
+# Pydio Cells Installation Configuration
+# This configures Cells to use Docker MySQL and MinIO
+
+# Frontend URL
+frontendUrl: "http://localhost:8081"
+frontendBindUrl: "0.0.0.0:8081"
+externalUrl: "http://localhost:8081"
+
+# Database configuration
+database:
+  driver: "mysql"
+  dsn: "cells:cellspassword@tcp(localhost:3307)/cells"
+
+# Default storage (MinIO)
+defaults:
+  datasources:
+    - name: "pydiods1"
+      storageType: "s3"
+      objectsServiceName: "default"
+      objectsHost: "localhost"
+      objectsPort: 9000
+      objectsApiKey: "minioadmin"
+      objectsApiSecret: "minioadmin123"
+      objectsBucket: "cells-data"
+      objectsSecure: false
+
+# Frontend login
+frontendLogin: "admin"
+frontendPassword: "admin123"
+
+# Advanced options
+proxyredirect: false

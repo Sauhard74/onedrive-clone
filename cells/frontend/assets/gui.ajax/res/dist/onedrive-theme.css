@@ -1,0 +1,696 @@
+/**
+ * Microsoft OneDrive Theme for Pydio Cells
+ * Comprehensive CSS to rebrand Pydio Cells to look exactly like OneDrive
+ */
+
+/* ============================================
+   1. Color Variables - OneDrive Color Scheme
+   ============================================ */
+:root {
+    /* Primary OneDrive Colors */
+    --onedrive-blue: #0078D4;
+    --onedrive-blue-dark: #004578;
+    --onedrive-blue-hover: #106EBE;
+    --onedrive-blue-light: #DEECF9;
+
+    /* Neutral Colors */
+    --onedrive-bg: #FAF9F8;
+    --onedrive-sidebar-bg: #F3F2F1;
+    --onedrive-surface: #FFFFFF;
+    --onedrive-border: #EDEBE9;
+    --onedrive-divider: #E1DFDD;
+
+    /* Text Colors */
+    --onedrive-text-primary: #323130;
+    --onedrive-text-secondary: #605E5C;
+    --onedrive-text-disabled: #A19F9D;
+
+    /* Status Colors */
+    --onedrive-success: #107C10;
+    --onedrive-error: #A80000;
+    --onedrive-warning: #FF8C00;
+
+    /* Shadows */
+    --onedrive-shadow-sm: 0 1.6px 3.6px 0 rgba(0,0,0,.132), 0 0.3px 0.9px 0 rgba(0,0,0,.108);
+    --onedrive-shadow-md: 0 6.4px 14.4px 0 rgba(0,0,0,.132), 0 1.2px 3.6px 0 rgba(0,0,0,.108);
+    --onedrive-shadow-lg: 0 25.6px 57.6px 0 rgba(0,0,0,.22), 0 4.8px 14.4px 0 rgba(0,0,0,.18);
+}
+
+/* ============================================
+   2. Global Overrides
+   ============================================ */
+body,
+.ajxp_desktop {
+    font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important;
+    background-color: var(--onedrive-bg) !important;
+    color: var(--onedrive-text-primary) !important;
+}
+
+/* Remove all Pydio branding */
+a[href*="pydio.com"],
+.pydio-link,
+[class*="pydio-logo"] {
+    display: none !important;
+}
+
+/* ============================================
+   3. Top Bar - OneDrive Style
+   ============================================ */
+#ajxpappbar,
+.ajxp_desktop #ajxpappbar {
+    background-color: var(--onedrive-surface) !important;
+    border-bottom: 1px solid var(--onedrive-border) !important;
+    box-shadow: var(--onedrive-shadow-sm) !important;
+    height: 48px !important;
+    padding: 0 16px !important;
+}
+
+/* OneDrive Logo Area */
+.ajxp_desktop #ajxpappbar .logo-container {
+    display: flex !important;
+    align-items: center !important;
+    height: 48px !important;
+}
+
+/* Hide Pydio logo, show custom */
+#ajxpappbar img[alt*="Pydio"],
+#ajxpappbar img[src*="Pydio"] {
+    content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%230078D4"><path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5zm0 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"/></svg>') !important;
+    width: 32px !important;
+    height: 32px !important;
+}
+
+/* Search Bar - OneDrive Style */
+#ajxpappbar .search-bar,
+#ajxpappbar input[type="search"],
+#ajxpappbar input[type="text"] {
+    background-color: var(--onedrive-bg) !important;
+    border: 1px solid transparent !important;
+    border-radius: 4px !important;
+    padding: 6px 12px !important;
+    font-size: 14px !important;
+    transition: all 0.15s ease !important;
+}
+
+#ajxpappbar input:focus {
+    background-color: var(--onedrive-surface) !important;
+    border-color: var(--onedrive-blue) !important;
+    outline: none !important;
+    box-shadow: 0 0 0 1px var(--onedrive-blue) !important;
+}
+
+/* Top Bar Icons */
+#ajxpappbar button,
+#ajxpappbar .mdi {
+    color: var(--onedrive-text-primary) !important;
+}
+
+#ajxpappbar button:hover {
+    background-color: var(--onedrive-bg) !important;
+    border-radius: 4px !important;
+}
+
+/* ============================================
+   4. Sidebar Navigation - OneDrive Style
+   ============================================ */
+#vertical_layout .infoPanelGroup,
+.left-panel,
+aside {
+    background-color: var(--onedrive-sidebar-bg) !important;
+    border-right: 1px solid var(--onedrive-border) !important;
+    width: 220px !important;
+}
+
+/* Navigation Items */
+.sidebar-nav-item,
+[role="navigation"] a,
+[role="navigation"] button {
+    color: var(--onedrive-text-primary) !important;
+    border-radius: 4px !important;
+    padding: 8px 12px !important;
+    margin: 2px 8px !important;
+    transition: background-color 0.15s ease !important;
+}
+
+.sidebar-nav-item:hover,
+[role="navigation"] a:hover,
+[role="navigation"] button:hover {
+    background-color: rgba(0, 120, 212, 0.1) !important;
+}
+
+.sidebar-nav-item.active,
+[role="navigation"] a.active {
+    background-color: var(--onedrive-blue-light) !important;
+    color: var(--onedrive-blue) !important;
+    font-weight: 600 !important;
+}
+
+/* Sidebar Icons */
+.sidebar-nav-item .mdi,
+[role="navigation"] .icon {
+    font-size: 20px !important;
+    margin-right: 12px !important;
+}
+
+/* ============================================
+   5. File Browser - Grid View
+   ============================================ */
+.ajxp_node_leaf,
+.file-item,
+[data-type="file"],
+[data-type="folder"] {
+    background-color: var(--onedrive-surface) !important;
+    border: 1px solid var(--onedrive-border) !important;
+    border-radius: 8px !important;
+    padding: 12px !important;
+    transition: all 0.2s ease !important;
+    cursor: pointer !important;
+}
+
+.ajxp_node_leaf:hover,
+.file-item:hover {
+    background-color: var(--onedrive-bg) !important;
+    box-shadow: var(--onedrive-shadow-md) !important;
+    border-color: var(--onedrive-blue-light) !important;
+    transform: translateY(-2px) !important;
+}
+
+.ajxp_node_leaf.selected,
+.file-item.selected {
+    background-color: var(--onedrive-blue-light) !important;
+    border-color: var(--onedrive-blue) !important;
+}
+
+/* File Icons - Larger like OneDrive */
+.ajxp_node_leaf .file-icon,
+.file-item .icon {
+    font-size: 64px !important;
+    margin-bottom: 8px !important;
+}
+
+/* File Names */
+.ajxp_node_leaf .file-name,
+.file-item .name {
+    font-size: 14px !important;
+    color: var(--onedrive-text-primary) !important;
+    font-weight: 400 !important;
+    word-break: break-word !important;
+}
+
+/* ============================================
+   6. File Browser - List View
+   ============================================ */
+.files-list-view,
+table.ajxp_table {
+    background-color: var(--onedrive-surface) !important;
+    border-radius: 8px !important;
+}
+
+.files-list-view tr,
+table.ajxp_table tr {
+    border-bottom: 1px solid var(--onedrive-border) !important;
+    transition: background-color 0.15s ease !important;
+}
+
+.files-list-view tr:hover,
+table.ajxp_table tr:hover {
+    background-color: var(--onedrive-bg) !important;
+}
+
+.files-list-view td,
+table.ajxp_table td {
+    padding: 12px 16px !important;
+    font-size: 14px !important;
+}
+
+/* ============================================
+   7. Command Bar - OneDrive Style
+   ============================================ */
+#main_toolbar,
+.command-bar {
+    background-color: transparent !important;
+    padding: 8px 16px !important;
+    border-bottom: 1px solid var(--onedrive-border) !important;
+}
+
+/* Toolbar Buttons */
+#main_toolbar button,
+.command-bar button {
+    background-color: transparent !important;
+    color: var(--onedrive-text-primary) !important;
+    border: none !important;
+    border-radius: 4px !important;
+    padding: 6px 12px !important;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    transition: background-color 0.15s ease !important;
+}
+
+#main_toolbar button:hover,
+.command-bar button:hover {
+    background-color: var(--onedrive-bg) !important;
+}
+
+/* Primary Action Button (New, Upload) */
+button.primary-action,
+button[class*="upload"],
+button[class*="create"] {
+    background-color: var(--onedrive-blue) !important;
+    color: white !important;
+    font-weight: 600 !important;
+}
+
+button.primary-action:hover {
+    background-color: var(--onedrive-blue-hover) !important;
+}
+
+/* ============================================
+   8. Breadcrumbs - OneDrive Style
+   ============================================ */
+.breadcrumb,
+.path-bar {
+    background-color: transparent !important;
+    padding: 8px 16px !important;
+    font-size: 14px !important;
+}
+
+.breadcrumb a,
+.breadcrumb span {
+    color: var(--onedrive-text-primary) !important;
+    text-decoration: none !important;
+}
+
+.breadcrumb a:hover {
+    color: var(--onedrive-blue) !important;
+    text-decoration: underline !important;
+}
+
+.breadcrumb .separator {
+    color: var(--onedrive-text-disabled) !important;
+    margin: 0 8px !important;
+}
+
+/* ============================================
+   9. Context Menu - OneDrive Style
+   ============================================ */
+.react-contextmenu,
+.context-menu {
+    background-color: var(--onedrive-surface) !important;
+    border: 1px solid var(--onedrive-border) !important;
+    border-radius: 8px !important;
+    box-shadow: var(--onedrive-shadow-lg) !important;
+    padding: 8px 0 !important;
+}
+
+.react-contextmenu-item,
+.context-menu-item {
+    padding: 8px 16px !important;
+    font-size: 14px !important;
+    color: var(--onedrive-text-primary) !important;
+    transition: background-color 0.15s ease !important;
+}
+
+.react-contextmenu-item:hover {
+    background-color: var(--onedrive-bg) !important;
+}
+
+.react-contextmenu-item .icon {
+    margin-right: 12px !important;
+    color: var(--onedrive-text-secondary) !important;
+}
+
+/* ============================================
+   10. Modals & Dialogs - OneDrive Style
+   ============================================ */
+.modal,
+.dialog,
+[role="dialog"] {
+    border-radius: 8px !important;
+    box-shadow: var(--onedrive-shadow-lg) !important;
+    background-color: var(--onedrive-surface) !important;
+}
+
+.modal-header,
+.dialog-header {
+    background-color: var(--onedrive-surface) !important;
+    border-bottom: 1px solid var(--onedrive-border) !important;
+    padding: 16px 24px !important;
+}
+
+.modal-title {
+    font-size: 20px !important;
+    font-weight: 600 !important;
+    color: var(--onedrive-text-primary) !important;
+}
+
+.modal-body,
+.dialog-content {
+    padding: 24px !important;
+}
+
+.modal-footer,
+.dialog-actions {
+    padding: 16px 24px !important;
+    border-top: 1px solid var(--onedrive-border) !important;
+    display: flex !important;
+    justify-content: flex-end !important;
+    gap: 8px !important;
+}
+
+/* ============================================
+   11. Buttons - OneDrive Style
+   ============================================ */
+button,
+.btn {
+    border-radius: 4px !important;
+    font-family: "Segoe UI", sans-serif !important;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    padding: 6px 16px !important;
+    transition: all 0.15s ease !important;
+    border: 1px solid transparent !important;
+}
+
+/* Primary Button */
+button.primary,
+.btn-primary,
+.mdc-button--raised {
+    background-color: var(--onedrive-blue) !important;
+    color: white !important;
+}
+
+button.primary:hover,
+.btn-primary:hover {
+    background-color: var(--onedrive-blue-hover) !important;
+}
+
+/* Secondary Button */
+button.secondary,
+.btn-secondary {
+    background-color: transparent !important;
+    border-color: var(--onedrive-border) !important;
+    color: var(--onedrive-text-primary) !important;
+}
+
+button.secondary:hover {
+    background-color: var(--onedrive-bg) !important;
+}
+
+/* ============================================
+   12. Forms & Inputs - OneDrive Style
+   ============================================ */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+textarea,
+select {
+    background-color: var(--onedrive-surface) !important;
+    border: 1px solid var(--onedrive-border) !important;
+    border-radius: 4px !important;
+    padding: 8px 12px !important;
+    font-size: 14px !important;
+    color: var(--onedrive-text-primary) !important;
+    transition: all 0.15s ease !important;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: var(--onedrive-blue) !important;
+    outline: none !important;
+    box-shadow: 0 0 0 1px var(--onedrive-blue) !important;
+}
+
+/* ============================================
+   13. Upload Progress - OneDrive Style
+   ============================================ */
+.upload-progress,
+.progress-bar {
+    background-color: var(--onedrive-surface) !important;
+    border: 1px solid var(--onedrive-border) !important;
+    border-radius: 8px !important;
+    padding: 16px !important;
+    box-shadow: var(--onedrive-shadow-md) !important;
+}
+
+.progress-bar-fill {
+    background-color: var(--onedrive-blue) !important;
+    border-radius: 4px !important;
+    transition: width 0.3s ease !important;
+}
+
+/* ============================================
+   14. Share Dialog - OneDrive Style
+   ============================================ */
+.share-dialog {
+    max-width: 560px !important;
+}
+
+.share-link-input {
+    background-color: var(--onedrive-bg) !important;
+    padding: 12px !important;
+    border-radius: 4px !important;
+    font-family: monospace !important;
+    word-break: break-all !important;
+}
+
+.permission-selector {
+    display: flex !important;
+    gap: 8px !important;
+    margin: 16px 0 !important;
+}
+
+.permission-option {
+    flex: 1 !important;
+    padding: 16px !important;
+    border: 2px solid var(--onedrive-border) !important;
+    border-radius: 8px !important;
+    text-align: center !important;
+    cursor: pointer !important;
+    transition: all 0.15s ease !important;
+}
+
+.permission-option:hover {
+    border-color: var(--onedrive-blue) !important;
+}
+
+.permission-option.selected {
+    border-color: var(--onedrive-blue) !important;
+    background-color: var(--onedrive-blue-light) !important;
+}
+
+/* ============================================
+   15. Version History - OneDrive Style
+   ============================================ */
+.version-history-list {
+    max-height: 400px !important;
+    overflow-y: auto !important;
+}
+
+.version-item {
+    padding: 12px !important;
+    border-bottom: 1px solid var(--onedrive-border) !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+}
+
+.version-item:hover {
+    background-color: var(--onedrive-bg) !important;
+}
+
+.version-label {
+    font-weight: 600 !important;
+    color: var(--onedrive-text-primary) !important;
+}
+
+.version-date {
+    font-size: 12px !important;
+    color: var(--onedrive-text-secondary) !important;
+}
+
+/* ============================================
+   16. Search Results - OneDrive Style
+   ============================================ */
+.search-results {
+    background-color: var(--onedrive-surface) !important;
+    border-radius: 8px !important;
+    box-shadow: var(--onedrive-shadow-md) !important;
+}
+
+.search-result-item {
+    padding: 12px 16px !important;
+    border-bottom: 1px solid var(--onedrive-border) !important;
+    transition: background-color 0.15s ease !important;
+}
+
+.search-result-item:hover {
+    background-color: var(--onedrive-bg) !important;
+}
+
+.search-highlight {
+    background-color: #FFF4CE !important;
+    font-weight: 600 !important;
+}
+
+/* ============================================
+   17. Right Panel (Details) - OneDrive Style
+   ============================================ */
+.details-panel,
+.info-panel {
+    background-color: var(--onedrive-surface) !important;
+    border-left: 1px solid var(--onedrive-border) !important;
+    width: 320px !important;
+}
+
+.details-section {
+    padding: 16px !important;
+    border-bottom: 1px solid var(--onedrive-border) !important;
+}
+
+.details-label {
+    font-size: 12px !important;
+    color: var(--onedrive-text-secondary) !important;
+    margin-bottom: 4px !important;
+}
+
+.details-value {
+    font-size: 14px !important;
+    color: var(--onedrive-text-primary) !important;
+    font-weight: 400 !important;
+}
+
+/* ============================================
+   18. Loading States - OneDrive Style
+   ============================================ */
+.loading-spinner {
+    color: var(--onedrive-blue) !important;
+}
+
+.skeleton {
+    background: linear-gradient(
+        90deg,
+        var(--onedrive-bg) 25%,
+        var(--onedrive-border) 50%,
+        var(--onedrive-bg) 75%
+    ) !important;
+    background-size: 200% 100% !important;
+    animation: loading 1.5s ease-in-out infinite !important;
+}
+
+@keyframes loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* ============================================
+   19. Notifications/Toasts - OneDrive Style
+   ============================================ */
+.notification,
+.toast {
+    background-color: var(--onedrive-surface) !important;
+    border-radius: 8px !important;
+    box-shadow: var(--onedrive-shadow-lg) !important;
+    padding: 16px !important;
+    min-width: 320px !important;
+}
+
+.notification.success {
+    border-left: 4px solid var(--onedrive-success) !important;
+}
+
+.notification.error {
+    border-left: 4px solid var(--onedrive-error) !important;
+}
+
+.notification.warning {
+    border-left: 4px solid var(--onedrive-warning) !important;
+}
+
+/* ============================================
+   20. Scrollbars - OneDrive Style
+   ============================================ */
+::-webkit-scrollbar {
+    width: 12px !important;
+    height: 12px !important;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--onedrive-bg) !important;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--onedrive-text-disabled) !important;
+    border-radius: 6px !important;
+    border: 3px solid var(--onedrive-bg) !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--onedrive-text-secondary) !important;
+}
+
+/* ============================================
+   21. Mobile Responsive
+   ============================================ */
+@media (max-width: 768px) {
+    .sidebar {
+        position: fixed !important;
+        left: -220px !important;
+        transition: left 0.3s ease !important;
+        z-index: 1000 !important;
+    }
+
+    .sidebar.open {
+        left: 0 !important;
+    }
+
+    .file-item {
+        width: 100% !important;
+        margin: 4px 0 !important;
+    }
+}
+
+/* ============================================
+   22. Accessibility
+   ============================================ */
+*:focus {
+    outline: 2px solid var(--onedrive-blue) !important;
+    outline-offset: 2px !important;
+}
+
+button:focus,
+a:focus {
+    outline: 2px solid var(--onedrive-blue) !important;
+    outline-offset: 2px !important;
+}
+
+/* ============================================
+   23. Print Styles
+   ============================================ */
+@media print {
+    .sidebar,
+    #ajxpappbar,
+    .command-bar,
+    .context-menu {
+        display: none !important;
+    }
+}
+
+/* ============================================
+   24. Dark Mode Support (Optional)
+   ============================================ */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --onedrive-bg: #201F1E;
+        --onedrive-sidebar-bg: #292827;
+        --onedrive-surface: #292827;
+        --onedrive-border: #3B3A39;
+        --onedrive-text-primary: #FFFFFF;
+        --onedrive-text-secondary: #C8C6C4;
+    }
+}
+
+/* ============================================
+   END OF ONEDRIVE THEME
+   ============================================ */
