@@ -21,7 +21,19 @@
       "Bash(awk '{print \"\"\"\"PID:\"\"\"\", $2, \"\"\"\"CPU:\"\"\"\", $3\"\"\"\"%\"\"\"\", \"\"\"\"MEM:\"\"\"\", $4\"\"\"\"%\"\"\"\", \"\"\"\"TIME:\"\"\"\", $10}')",
       "Bash(npx webpack --config webpack.core.js)",
       "Bash(npx webpack --config webpack.libs.js)",
-      "Bash(npm run build-libs)"
+      "Bash(npm run build-libs)",
+      "Bash(npm run build-boot)",
+      "Bash(./cells start --bind 0.0.0.0:8081)",
+      "Bash(curl -k -I https://localhost:8081)",
+      "Bash(npx create-react-app onedrive-frontend --template minimal)",
+      "Bash(npm create vite@latest onedrive-frontend -- --template react)",
+      "Bash(npm install axios)",
+      "Bash(npm run dev)",
+      "Bash(curl -k -X POST https://localhost:8081/auth/login -H \"Content-Type: application/json\" -d '{\"\"\"\"login\"\"\"\":\"\"\"\"admin\"\"\"\",\"\"\"\"password\"\"\"\":\"\"\"\"admin123\"\"\"\"}' -v)",
+      "Bash(curl -k -X POST https://localhost:8081/auth/login -H \"Content-Type: application/json\" -d '{\"\"\"\"login\"\"\"\":\"\"\"\"admin\"\"\"\",\"\"\"\"password\"\"\"\":\"\"\"\"admin123\"\"\"\"}')",
+      "Bash(curl -k https://localhost:8081/a/frontend/state)",
+      "Bash(curl -k -X POST https://localhost:8081/a/frontend/session -H \"Content-Type: application/json\" -d '{\"\"\"\"AuthInfo\"\"\"\":{\"\"\"\"login\"\"\"\":\"\"\"\"admin\"\"\"\",\"\"\"\"password\"\"\"\":\"\"\"\"admin123\"\"\"\",\"\"\"\"type\"\"\"\":\"\"\"\"credentials\"\"\"\"}}')",
+      "Bash(curl -k -X POST https://localhost:8081/a/frontend/session -H \"Content-Type: application/json\" -d '{\"\"AuthInfo\"\":{\"\"login\"\":\"\"admin\"\",\"\"password\"\":\"\"admin123\"\",\"\"type\"\":\"\"credentials\"\"}}')"
     ],
     "deny": [],
     "ask": []

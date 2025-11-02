@@ -1,0 +1,943 @@
+/* Microsoft OneDrive Dark Theme - Pixel Perfect 2025 */
+
+:root {
+  /* Dark Theme Colors - Brighter OneDrive Style */
+  --od-bg-primary: #1E1E1E;
+  --od-bg-secondary: #252526;
+  --od-bg-tertiary: #2D2D2D;
+  --od-bg-hover: #2A2D2E;
+  --od-bg-selected: #37373D;
+  --od-bg-selected-hover: #3E3E42;
+
+  /* OneDrive Blue */
+  --od-blue: #0078D4;
+  --od-blue-hover: #106EBE;
+  --od-blue-dark: #005A9E;
+
+  /* Text Colors */
+  --od-text-primary: #CCCCCC;
+  --od-text-secondary: #8C8C8C;
+  --od-text-disabled: #6D6D6D;
+
+  /* Borders */
+  --od-border: #3C3C3C;
+  --od-border-light: #2B2B2B;
+
+  /* Shadows */
+  --od-shadow: 0 2px 4px rgba(0,0,0,0.4);
+  --od-shadow-lg: 0 4px 8px rgba(0,0,0,0.5);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+  background-color: var(--od-bg-primary);
+  color: var(--od-text-primary);
+  font-size: 13px;
+  line-height: 18px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* App Container */
+.od-App {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background: var(--od-bg-primary);
+}
+
+/* ===== TOP HEADER ===== */
+.od-Header {
+  height: 48px;
+  background: #2B2B2B;
+  border-bottom: 1px solid #3C3C3C;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  gap: 8px;
+  flex-shrink: 0;
+  z-index: 100;
+}
+
+.od-Header-left {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.od-Header-appLauncher {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+  color: var(--od-text-secondary);
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.1s ease;
+}
+
+.od-Header-appLauncher:hover {
+  background: var(--od-bg-hover);
+  color: var(--od-text-primary);
+}
+
+.od-Header-appLauncher svg {
+  width: 20px;
+  height: 20px;
+}
+
+.od-Header-tabs {
+  display: flex;
+  gap: 0;
+  margin-left: 12px;
+}
+
+.od-Header-tab {
+  height: 48px;
+  padding: 0 16px;
+  background: transparent;
+  border: none;
+  color: var(--od-text-secondary);
+  font-size: 14px;
+  font-family: inherit;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.1s ease;
+}
+
+.od-Header-tab:hover {
+  color: var(--od-text-primary);
+}
+
+.od-Header-tab--active {
+  color: var(--od-text-primary);
+}
+
+.od-Header-tab--active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: #FFFFFF;
+}
+
+.od-Header-center {
+  flex: 0 0 auto;
+  width: 480px;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.od-Header-right {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
+}
+
+.od-Header-storageButton {
+  height: 32px;
+  padding: 0 8px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: transparent;
+  border: 1px solid #505050;
+  border-radius: 4px;
+  color: var(--od-text-primary);
+  font-size: 11px;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.1s ease;
+  line-height: 1.2;
+}
+
+.od-Header-storageButton:hover {
+  background: var(--od-bg-hover);
+}
+
+.od-Header-iconButton {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+  color: var(--od-text-secondary);
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.1s ease;
+}
+
+.od-Header-iconButton:hover {
+  background: var(--od-bg-hover);
+  color: var(--od-text-primary);
+}
+
+.od-Header-iconButton svg {
+  width: 16px;
+  height: 16px;
+}
+
+.od-Header-logo {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.od-Header-logo:hover .od-Header-logo-icon {
+  opacity: 0.8;
+}
+
+.od-Header-logo-icon {
+  width: 28px;
+  height: 28px;
+}
+
+.od-SearchBox {
+  position: relative;
+  width: 100%;
+}
+
+.od-SearchBox-input {
+  width: 100%;
+  height: 32px;
+  padding: 0 12px 0 36px;
+  border: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: inherit;
+  background: #3A3A3A;
+  color: #FFFFFF;
+}
+
+.od-SearchBox-input::placeholder {
+  color: #8C8C8C;
+}
+
+.od-SearchBox-input:focus {
+  outline: none;
+  background: #404040;
+}
+
+.od-SearchBox-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  color: #8C8C8C;
+  pointer-events: none;
+}
+
+.od-Header-button {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  border-radius: 2px;
+  cursor: pointer;
+  color: var(--od-text-primary);
+}
+
+.od-Header-button:hover {
+  background: var(--od-bg-hover);
+}
+
+.od-Header-button svg {
+  width: 16px;
+  height: 16px;
+}
+
+.od-Header-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--od-blue);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-left: 4px;
+}
+
+.od-Header-avatar:hover {
+  opacity: 0.9;
+}
+
+/* ===== FILTER BAR (Second Header Row) ===== */
+.od-FilterBar {
+  height: 48px;
+  background: #242424;
+  border-bottom: 1px solid #3C3C3C;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.od-FilterBar-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+.od-FilterBar-createButton {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--od-blue);
+  border: none;
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.1s ease;
+}
+
+.od-FilterBar-createButton:hover {
+  background: var(--od-blue-hover);
+}
+
+.od-FilterBar-createButton svg {
+  width: 16px;
+  height: 16px;
+}
+
+.od-FilterBar-label {
+  font-size: 14px;
+  color: var(--od-text-primary);
+  font-weight: 500;
+}
+
+.od-FilterBar-pills {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.od-FilterBar-pill {
+  height: 28px;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  background: transparent;
+  border: 1px solid var(--od-border);
+  border-radius: 16px;
+  color: var(--od-text-secondary);
+  font-size: 13px;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.1s ease;
+  white-space: nowrap;
+}
+
+.od-FilterBar-pill:hover {
+  background: var(--od-bg-hover);
+  border-color: var(--od-text-secondary);
+  color: var(--od-text-primary);
+}
+
+.od-FilterBar-pill--active {
+  background: var(--od-bg-tertiary);
+  border-color: var(--od-text-primary);
+  color: var(--od-text-primary);
+}
+
+.od-FilterBar-pill svg {
+  width: 16px;
+  height: 16px;
+}
+
+.od-FilterBar-right {
+  display: flex;
+  align-items: center;
+}
+
+.od-FilterBar-filterInput {
+  width: 280px;
+  height: 32px;
+  padding: 0 12px;
+  border: 1px solid var(--od-border);
+  border-radius: 4px;
+  background: var(--od-bg-primary);
+  color: var(--od-text-primary);
+  font-size: 13px;
+  font-family: inherit;
+}
+
+.od-FilterBar-filterInput::placeholder {
+  color: var(--od-text-secondary);
+}
+
+.od-FilterBar-filterInput:focus {
+  outline: none;
+  border-color: var(--od-blue);
+}
+
+/* ===== MAIN CONTENT ===== */
+.od-Content {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* ===== LEFT SIDEBAR ===== */
+.od-LeftNav {
+  width: 200px;
+  background: #181818;
+  border-right: 1px solid var(--od-border);
+  padding: 12px 8px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.od-LeftNav-item {
+  height: 36px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 12px;
+  cursor: pointer;
+  border-radius: 4px;
+  color: var(--od-text-secondary);
+  position: relative;
+  font-size: 14px;
+  transition: background 0.1s ease;
+}
+
+.od-LeftNav-item:hover {
+  background: var(--od-bg-hover);
+  color: var(--od-text-primary);
+}
+
+.od-LeftNav-item.is-selected {
+  background: var(--od-bg-selected);
+  color: var(--od-text-primary);
+}
+
+.od-LeftNav-item.is-selected::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 6px;
+  bottom: 6px;
+  width: 3px;
+  background: var(--od-blue);
+  border-radius: 0 2px 2px 0;
+}
+
+.od-LeftNav-item svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.od-LeftNav-item-text {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ===== COMMAND BAR ===== */
+.od-CommandBar {
+  height: 44px;
+  background: #181818;
+  border-bottom: 1px solid var(--od-border);
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.od-CommandBar-button {
+  height: 32px;
+  padding: 0 12px;
+  border: 1px solid var(--od-border);
+  background: var(--od-bg-tertiary);
+  border-radius: 2px;
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--od-text-primary);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: inherit;
+  white-space: nowrap;
+}
+
+.od-CommandBar-button:hover:not(:disabled) {
+  background: var(--od-bg-hover);
+  border-color: var(--od-text-secondary);
+}
+
+.od-CommandBar-button:disabled {
+  color: var(--od-text-disabled);
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.od-CommandBar-button svg {
+  width: 16px;
+  height: 16px;
+}
+
+.od-CommandBar-button--primary {
+  background: var(--od-blue);
+  border-color: var(--od-blue);
+  color: white;
+  font-weight: 600;
+}
+
+.od-CommandBar-button--primary:hover:not(:disabled) {
+  background: var(--od-blue-hover);
+  border-color: var(--od-blue-hover);
+}
+
+.od-CommandBar-divider {
+  width: 1px;
+  height: 24px;
+  background: var(--od-border);
+  margin: 0 4px;
+}
+
+.od-CommandBar-spacer {
+  flex: 1;
+}
+
+/* ===== FILE LIST ===== */
+.od-FileList {
+  flex: 1;
+  background: var(--od-bg-primary);
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.od-FileList-breadcrumb {
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid var(--od-border);
+  background: var(--od-bg-secondary);
+}
+
+.od-FileList-breadcrumb-item {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--od-text-primary);
+}
+
+/* List View Header */
+.od-FileList-header {
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  border-bottom: 1px solid var(--od-border);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--od-text-secondary);
+  background: var(--od-bg-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.od-FileList-header-checkbox {
+  display: none;
+}
+
+.od-FileList-header-name {
+  flex: 1;
+  min-width: 300px;
+}
+
+.od-FileList-header-modified {
+  width: 180px;
+  flex-shrink: 0;
+}
+
+.od-FileList-header-modifiedBy {
+  width: 180px;
+  flex-shrink: 0;
+}
+
+.od-FileList-header-size {
+  width: 120px;
+  flex-shrink: 0;
+  text-align: right;
+}
+
+/* List View Rows */
+.od-FileList-row {
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  border-bottom: 1px solid var(--od-border-light);
+  cursor: pointer;
+  min-height: 36px;
+  transition: background-color 0.1s ease;
+}
+
+.od-FileList-row:hover {
+  background: var(--od-bg-tertiary);
+}
+
+.od-FileList-row.is-selected {
+  background: var(--od-bg-selected);
+}
+
+.od-FileList-row.is-selected:hover {
+  background: var(--od-bg-selected-hover);
+}
+
+.od-FileList-cell-checkbox {
+  display: none;
+}
+
+.od-FileList-checkbox {
+  display: none;
+}
+
+.od-FileList-checkbox.is-checked {
+  display: none;
+}
+
+.od-FileList-cell-name {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--od-text-primary);
+}
+
+.od-FileList-cell-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.od-FileList-cell-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.od-FileList-cell-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.od-FileList-cell-modified,
+.od-FileList-cell-modifiedBy,
+.od-FileList-cell-size {
+  font-size: 12px;
+  color: var(--od-text-secondary);
+  flex-shrink: 0;
+}
+
+.od-FileList-cell-modified {
+  width: 180px;
+}
+
+.od-FileList-cell-modifiedBy {
+  width: 180px;
+}
+
+.od-FileList-cell-size {
+  width: 120px;
+  text-align: right;
+}
+
+/* Grid View */
+.od-FileList-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 8px;
+  padding: 16px;
+}
+
+.od-FileList-tile {
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  background: var(--od-bg-secondary);
+  transition: all 0.1s ease;
+}
+
+.od-FileList-tile:hover {
+  background: var(--od-bg-tertiary);
+  border-color: var(--od-border);
+}
+
+.od-FileList-tile.is-selected {
+  background: var(--od-bg-selected);
+  border-color: var(--od-blue);
+}
+
+.od-FileList-tile-icon {
+  width: 100%;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.od-FileList-tile-icon svg {
+  width: 48px;
+  height: 48px;
+}
+
+.od-FileList-tile-name {
+  font-size: 12px;
+  color: var(--od-text-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-bottom: 4px;
+}
+
+.od-FileList-tile-info {
+  font-size: 11px;
+  color: var(--od-text-secondary);
+}
+
+/* ===== EMPTY STATE ===== */
+.od-EmptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  min-height: 300px;
+  color: var(--od-text-secondary);
+  padding: 48px 24px;
+}
+
+.od-EmptyState-icon {
+  width: 96px;
+  height: 96px;
+  margin-bottom: 24px;
+  opacity: 0.3;
+}
+
+.od-EmptyState-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--od-text-primary);
+}
+
+.od-EmptyState-text {
+  font-size: 13px;
+  margin-bottom: 24px;
+  text-align: center;
+  max-width: 400px;
+}
+
+.od-EmptyState-button {
+  height: 32px;
+  padding: 0 20px;
+  background: var(--od-blue);
+  color: white;
+  border: none;
+  border-radius: 2px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.od-EmptyState-button:hover {
+  background: var(--od-blue-hover);
+}
+
+/* ===== LOADING ===== */
+.od-Loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  min-height: 200px;
+}
+
+.od-Loading-spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid var(--od-border);
+  border-top-color: var(--od-blue);
+  border-radius: 50%;
+  animation: od-spin 1s linear infinite;
+}
+
+@keyframes od-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ===== LOGIN PAGE ===== */
+.od-Login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  background: var(--od-bg-primary);
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.od-Login-card {
+  width: 440px;
+  padding: 48px;
+  background: var(--od-bg-secondary);
+  box-shadow: var(--od-shadow-lg);
+  border-radius: 4px;
+  border: 1px solid var(--od-border);
+}
+
+.od-Login-logo {
+  width: 108px;
+  height: 24px;
+  margin-bottom: 32px;
+}
+
+.od-Login-title {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--od-text-primary);
+}
+
+.od-Login-subtitle {
+  font-size: 14px;
+  color: var(--od-text-secondary);
+  margin-bottom: 24px;
+}
+
+.od-Login-input {
+  width: 100%;
+  height: 36px;
+  padding: 0 12px;
+  margin-bottom: 16px;
+  border: 1px solid var(--od-border);
+  border-radius: 2px;
+  font-size: 14px;
+  font-family: inherit;
+  background: var(--od-bg-primary);
+  color: var(--od-text-primary);
+}
+
+.od-Login-input::placeholder {
+  color: var(--od-text-secondary);
+}
+
+.od-Login-input:focus {
+  outline: none;
+  border-color: var(--od-blue);
+  border-width: 2px;
+  padding: 0 11px;
+}
+
+.od-Login-button {
+  width: 100%;
+  height: 36px;
+  background: var(--od-blue);
+  color: white;
+  border: none;
+  border-radius: 2px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.od-Login-button:hover:not(:disabled) {
+  background: var(--od-blue-hover);
+}
+
+.od-Login-button:disabled {
+  background: var(--od-bg-tertiary);
+  color: var(--od-text-disabled);
+  cursor: not-allowed;
+}
+
+.od-Login-error {
+  color: #F48771;
+  font-size: 12px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+/* ===== SCROLLBAR ===== */
+.od-LeftNav::-webkit-scrollbar,
+.od-FileList::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+.od-LeftNav::-webkit-scrollbar-track,
+.od-FileList::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.od-LeftNav::-webkit-scrollbar-thumb,
+.od-FileList::-webkit-scrollbar-thumb {
+  background: var(--od-bg-hover);
+  border-radius: 6px;
+  border: 3px solid var(--od-bg-primary);
+}
+
+.od-LeftNav::-webkit-scrollbar-thumb:hover,
+.od-FileList::-webkit-scrollbar-thumb:hover {
+  background: var(--od-text-secondary);
+}
+
+/* ===== UTILITIES ===== */
+.od-hidden {
+  display: none !important;
+}
